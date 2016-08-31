@@ -10,4 +10,6 @@ package hbi.core.azkaban.util;
 public class RequestUrl {
     public final static String PROJECT_MANAGER = "manager";
     public final static String INDEX = "index";
+    public static final String SCHEDULE="schedule";
+    public static final String MANAGER="manager";
 }

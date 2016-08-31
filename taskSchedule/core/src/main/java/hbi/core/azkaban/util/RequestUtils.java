@@ -1,4 +1,4 @@
-package hbi.core.azkaban.util;
+﻿package hbi.core.azkaban.util;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -75,4 +75,5 @@ public class RequestUtils {
             return true;
         }
     }
+
 }

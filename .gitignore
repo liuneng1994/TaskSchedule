@@ -2,3 +2,7 @@
 *.class
 /.idea/
 .idea/
+*.iml
+*.log
+*.iml
+*.info
