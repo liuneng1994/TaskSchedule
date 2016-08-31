@@ -40,6 +40,5 @@ public class ProjectServiceImplTest {
      */
     @Ignore
     public void testDeleteProject() throws Exception {
-//TODO: Test goes here... 
     }
 } 
