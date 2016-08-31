@@ -8,5 +8,7 @@ package hbi.core.azkaban.util;
  * Records all request url.
  */
 public class RequestUrl {
+    public static final String SCHEDULE="schedule";
+    public static final String MANAGER="manager";
 
 }
