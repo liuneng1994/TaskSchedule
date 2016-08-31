@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+
+    <!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+    <!--根据Maven打包profile,动态加载config.properties-->
+    <context:property-placeholder location="classpath:hbi/core/config/config.properties"/>
+    <import resource="classpath:hap/core/config/RootServletContextCommon.xml"/>
+        <!-- 扫描@Controller注解 -->
+    <context:component-scan base-package="hap.core,hbi.core">
+        <context:include-filter type="annotation"
+                                expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+    <bean id="handlerMapping"
+          class="org.resthub.web.springmvc.router.RouterHandlerMapping">
+        <property name="routeFiles">
+            <list>
+                <value>classpath:hap/core/routes.conf</value>
+                <value>classpath:hbi/core/routes.conf</value>
+                <!--
+                    Router will *hbi.coreend* routes declared in additional files
+                    <value>addroutes.conf</value>
+                -->
+            </list>
+        </property>
+
+        <!--
+            Uncomment the following configuration line
+            if you want routes to be dynamically reloaded when
+            route files are modified.
+            Can be a good idea in dev mode, not so much in production!
+        -->
+        <!-- <property name="autoReloadEnabled" value="true" /> -->
+    </bean>
+
+</beans>

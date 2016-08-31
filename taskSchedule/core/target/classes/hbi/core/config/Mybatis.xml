@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://mybatis.org/schema/mybatis-spring
+       http://mybatis.org/schema/mybatis-spring.xsd">
+
+  <bean id="sqlSessionFactory" class="hap.core.support.mybatis.MybatisSqlSessionFactoryBean">
+    <property name="dataSource" ref="dataSource" />
+    <property name="sqlHelperImpl" ref="sqlHelper"/>
+    <property name="mapperLocations" value="classpath*:hap/core/mapper/*.xml,hbi/core/mapper/*.xml" />
+    <property name="configLocation" value="classpath:hap/core/config/mybatis-config.xml"/>
+ 	    <property name="plugins">
+	        <array>
+	        	<bean class="hap.core.support.mybatis.interceptor.RequestContextInterceptor"/>
+	            <bean class="hap.core.support.mybatis.interceptor.MultiLanguageInterceptor"/>
+	        </array>
+    	</property>
+  </bean>
+
+    <mybatis:scan base-package="hap.core.mapper,hbi.core.mapper" />
+
+    <bean id="sqlHelper" class="hap.core.support.mybatis.mapper.SqlHelperImpl">
+        <constructor-arg index="0" value="com.mysql.jdbc.Driver"> </constructor-arg>
+    </bean>
+</beans>

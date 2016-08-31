@@ -1,0 +1,6 @@
+hbi\core\azkaban\entity\flow\Edge.class
+hbi\core\mapper\DemoMenuMapper.class
+hbi\core\azkaban\entity\flow\Node.class
+hbi\core\azkaban\entity\project\SimpleProject.class
+hbi\core\controller\DemoMenuController.class
+hbi\core\dto\DemoMenu.class

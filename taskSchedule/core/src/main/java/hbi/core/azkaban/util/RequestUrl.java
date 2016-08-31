@@ -8,5 +8,6 @@ package hbi.core.azkaban.util;
  * Records all request url.
  */
 public class RequestUrl {
-
+    public final static String PROJECT_MANAGER = "manager";
+    public final static String INDEX = "index";
 }
