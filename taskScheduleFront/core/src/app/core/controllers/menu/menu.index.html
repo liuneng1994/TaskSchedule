@@ -1,0 +1,130 @@
+<div class="row">
+  <div class="col-lg-12 col-sm-12 col-xs-12">
+      <div class="widget-body widget-background">
+        <form role="form" name="menuManageForm" novalidate>
+          <div class="form-title-sky form-title-size" translate="core.menu.info"></div>
+          <div class="bordered-themeprimary bordered-bottom-2 cut-off-rule"></div>
+          <div ng-show="vm.isError"   class="alert alert-danger small">
+            <strong translate="common.error.check"></strong>
+            <ul>
+                <li ng-repeat="errorMessage in vm.errorMessages">{{errorMessage.field}}:{{errorMessage.message}}</li>
+            </ul>
+          </div>
+          <div class="row">
+            <table class="col-lg-5 col-sm-5 col-xs-5 col-sm-offset-1 user-table">
+              <tbody>
+              <tr>
+                <td>
+                  <div class="row">
+                    <div class="checkbox" >
+                      <treecontrol class="tree-classic"
+                                   tree-model="vm.menuTree"
+                                   options="vm.treeOptions"
+                                   expanded-nodes="vm.expandNodeData"
+                                   on-selection="vm.editMenu(node.id)"
+                      >
+                        {{node.name}}
+                      </treecontrol>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+            <table class="col-lg-5 col-sm-5 col-xs-5 user-table">
+              <tbody>
+              <tr>
+                <td>
+                  <p translate="core.menu.name"></p>
+                </td>
+                <td>
+                <span class="col-lg-10 col-sm-10 col-xs-10" ng-class="{ 'has-error' : vm.errors.name}">
+                  <input type="text" class="form-control input-sm" translate translate-attr-placeholder="core.menu.name" ng-model="vm.menu.name" value="{{vm.menu.name}}" required>
+                  <p ng-if="vm.errors.name" class="help-block">{{vm.errors.name}}</p>
+                </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p translate="core.menu.description"></p>
+                </td>
+                <td>
+                <span class="col-lg-10 col-sm-10 col-xs-10" ng-class="{ 'has-error' : vm.errors.description}">
+                    <input type="text" class="form-control input-sm" translate translate-attr-placeholder="core.menu.description" ng-model="vm.menu.description" value="{{vm.menu.description}}" required>
+                    <p ng-if="vm.errors.description" class="help-block">{{vm.errors.description}}</p>
+                </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p translate="core.menu.location"></p>
+                </td>
+                <td>
+                <span class="col-lg-10 col-sm-10 col-xs-10" ng-class="{ 'has-error' : vm.errors.odr}">
+                    <input type="number" class="form-control input-sm" translate translate-attr-placeholder="core.menu.location" ng-model="vm.menu.odr" value="{{vm.menu.odr}}" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" required>
+                    <p ng-if="vm.errors.odr" class="help-block">{{vm.errors.odr}}</p>
+                </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p translate="core.menu.icon"></p>
+                </td>
+                <td>
+                <span class="col-lg-10 col-sm-10 col-xs-10">
+                    <input type="text" style="border-top-right-radius: 0 !important; border-bottom-right-radius: 0 !important;border-right: none;" class="form-control input-sm selectinput" value="{{vm.menu.icon}}" ng-model="vm.menu.icon" translate translate-attr-placeholder="core.menu.noIcon">
+                    <select ng-model="vm.menu.icon" class="selectinput-select" ng-options="icon.value as icon.value for icon in vm.icons">
+                      <option value="" translate="core.menu.noIcon"><i class='icon.value'></option>
+                    </select>
+                </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p translate="core.menu.parentMenu"></p>
+                </td>
+                <td>
+                <span class="col-lg-10 col-sm-10 col-xs-10">
+                    <select ng-model="vm.menu.parentId"  style="width: 100%" ng-options="menu.id as menu.name for menu in vm.menus">
+                      <option value="" translate="core.menu.topMenu"></option>
+                    </select>
+                </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p translate="core.menu.resources"></p>
+                </td>
+                <td>
+                <span class="col-lg-10 col-sm-10 col-xs-10">
+                    <select ng-model="vm.menu.resourceId"  style="width: 100%" ng-options="resource.id as resource.name for resource in vm.resources">
+                      <option value="" translate="core.menu.slectResource"></option>
+                    </select>
+                </span>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="row">
+            <div class="form-top-border"></div>
+            <div class="col-sm-offset-8">
+              <div ng-show="!vm.isUpdate" class="grid-table-btn">
+                <button type="button"  ng-click="vm.create()"   ng-disabled="menuManageForm.$invalid" translate="common.add" class="btn btn-sm btn-primary form-btn"></button>
+              </div>
+              <div ng-show="vm.isUpdate" class="grid-table-btn">
+                <button type="button" ng-click="vm.update()"  ng-disabled="menuManageForm.$invalid && vm.isChanged()" translate="common.update" class="btn btn-sm btn-primary form-btn"></button>
+              </div>
+              <div class="grid-table-btn">
+                <button type="button" ng-click="vm.delete()" ng-disabled="!vm.isUpdate || vm.isDeleted()" translate="common.delete" class="btn btn-sm form-btn btn-danger"></button>
+                <button type="button" ng-click="vm.recovery()" ng-disabled="!vm.isUpdate || !vm.isDeleted()" translate="common.recovery" class="btn btn-sm  form-btn btn-success"></button>
+              </div>
+              <div class="grid-table-btn">
+                <button type="button" ng-click="vm.reset()" translate="common.reset" class="btn btn-sm btn-black form-btn"></button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+</div>

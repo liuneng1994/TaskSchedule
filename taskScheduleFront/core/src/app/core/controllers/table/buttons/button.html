@@ -1,0 +1,21 @@
+<div class="grid-table-btn">
+  <a class="btn btn-info btn-xs" ng-click="vm.show(row.id)">
+    <span class="fa fa-list" aria-hidden="true"></span>详情</a>
+</div>
+
+<div class="grid-table-btn">
+  <a class="btn btn-warning btn-xs" ng-click="vm.disabled(row.id)">
+    <span class="fa fa-ban" aria-hidden="true"></span>禁用</a>
+</div>
+<div class="grid-table-btn">
+  <a class="btn btn-success btn-xs" ng-click="vm.edit(row.id)">
+    <span class="fa fa-refresh" aria-hidden="true"></span>更新</a>
+</div>
+<div class="grid-table-btn">
+  <a st-delete class="btn btn-danger btn-xs" ng-click="vm.delete(row.id)" >
+    <span class="fa fa-trash-o" aria-hidden="true"></span>删除</a>
+</div>
+<div class="grid-table-btn">
+  <a class="btn btn-primary btn-xs" ng-click="rowform.$show()" >
+    <span class="fa fa-pencil" aria-hidden="true"></span>编辑</a>
+</div>

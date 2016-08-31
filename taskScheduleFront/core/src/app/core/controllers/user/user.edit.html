@@ -1,0 +1,134 @@
+<div class="row">
+  <div class="col-lg-12 col-sm-12 col-xs-12">
+    <div class="widget-body widget-background">
+      <form role="form" name="userEditForm" novalidate>
+        <div class="form-title-sky form-title-size" translate="core.user.info"></div>
+        <div class="bordered-themeprimary bordered-bottom-2 cut-off-rule"></div>
+        <div ng-show="vm.isError"   class="alert alert-danger small">
+          <strong translate="common.error.check"></strong>
+          <ul>
+              <li ng-repeat="errorMessage in vm.errorMessages">{{errorMessage.field}}:{{errorMessage.message}}</li>
+          </ul>
+        </div>
+        <div class="row">
+          <table class="col-lg-5 col-sm-5 col-xs-5 col-sm-offset-1 user-table">
+            <tbody>
+            <tr>
+              <td class="td-info">
+                <p><span class="red-star">* </span>{{'core.user.loginName' | translate}}</p>
+              </td>
+              <td class="td-input">
+                <span class="col-lg-10 col-sm-10 col-xs-10" ng-class="{ 'has-error' : vm.errors.loginName}">
+                  <input type="text" class="form-control input-sm" ng-model="vm.user.loginName" value="{{vm.user.loginName}}" required translate translate-attr-placeholder="core.user.loginName">
+                </span>
+              </td>
+            </tr>
+            <tr ng-if="vm.errors.loginName" ng-class="{ 'has-error' : vm.errors.loginName}">
+              <td class="td-info"></td>
+              <td>
+                <span class="col-lg-10 col-sm-10 col-xs-10">
+                   <p class="help-block">{{vm.errors.loginName}}</p>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td class="td-info">
+                <p><span class="red-star">* </span>{{'core.user.password' | translate}}</p>
+              </td>
+              <td class="td-input">
+                <span class="col-lg-10 col-sm-10 col-xs-10" ng-class="{ 'has-error' : vm.errors.password}">
+                  <input type="password" class="form-control input-sm" ng-model="vm.user.hashedPassword" value="{{vm.user.hashedPassword}}" required translate translate-attr-placeholder="core.user.password">
+                </span>
+              </td>
+            </tr>
+            <tr ng-if="vm.errors.hashedPassword" ng-class="{ 'has-error' : vm.errors.hashedPassword}">
+              <td class="td-info"></td>
+              <td>
+                <span class="col-lg-10 col-sm-10 col-xs-10">
+                   <p class="help-block">{{vm.errors.hashedPassword}}</p>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td class="td-info">
+                <p><span class="red-star">* </span>{{'core.user.name' | translate}}</p>
+              </td>
+              <td class="td-input">
+                <span class="col-lg-10 col-sm-10 col-xs-10"  ng-class="{ 'has-error' : vm.errors.name}">
+                    <input type="text" class="form-control input-sm" ng-model="vm.user.name" value="{{vm.user.name}}" required translate translate-attr-placeholder="core.user.name">
+                    <p ng-if="vm.errors.name" class="help-block">{{vm.errors.name}}</p>
+                  </span>
+              </td>
+            </tr>
+            <tr>
+              <td class="td-info">
+                <p>{{'core.role.name' | translate}}</p>
+              </td>
+              <td class="td-input">
+                <span class="col-lg-10 col-sm-10 col-xs-10">
+                    <select kendo-multi-select k-options="vm.selectOptions" k-ng-model="vm.selectedIds"></select>
+                </span>     
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          <table class="col-lg-5 col-sm-5 col-xs-5 user-table">
+            <tbody>
+            <tr>
+              <td class="td-info">
+                <p>{{'core.user.borthDate' | translate}}</p>
+              </td>
+              <td class="td-input">
+                <span class="col-lg-10 col-sm-10 col-xs-10" ng-class="{ 'has-error' : vm.errors.borthDate}">
+                    <input type="text" class="form-control" placeholder="yyyy/MMMM/dd" datepicker-popup="{{format}}" ng-model="vm.user.borthDate" is-open="vm.opened" datepicker-options="dateOptions" close-text="Close" ng-click="vm.open($event)">
+                    <p ng-if="vm.errors.borthDate" class="help-block">{{vm.errors.borthDate}}</p>
+                  </span>
+              </td>
+            </tr>
+            <tr>
+              <td class="td-info">
+                <p>{{'core.user.phone' | translate}}</p>
+              </td>
+              <td class="td-input">
+                <span class="col-lg-10 col-sm-10 col-xs-10" ng-class="{ 'has-error' : vm.errors.phone}">
+                    <input type="text" class="form-control input-sm" ng-model="vm.user.phone" value="{{vm.user.phone}}" translate translate-attr-placeholder="core.user.phone">
+                    <p ng-if="vm.errors.phone" class="help-block">{{vm.errors.phone}}</p>
+                  </span>
+              </td>
+            </tr>
+            <tr>
+              <td class="td-info">
+                <p><span class="red-star">* </span>{{'core.user.emailAddress' | translate}}</p>
+              </td>
+              <td class="td-input">
+                <span class="col-lg-10 col-sm-10 col-xs-10" ng-class="{ 'has-error' : vm.errors.emailAddress}">
+                    <input type="text" class="form-control input-sm" ng-model="vm.user.emailAddress" value="{{vm.user.emailAddress}}" required translate translate-attr-placeholder="core.user.emailAddress">
+                     <p ng-if="vm.errors.emailAddress" class="help-block">{{vm.errors.emailAddress}}</p>
+                  </span>
+              </td>
+            </tr>
+            <tr>
+              <td class="td-info">
+                <p><span class="red-star">* </span>{{'core.user.language' | translate}}</p>
+              </td>
+              <td class="td-input">
+                <span class="col-lg-10 col-sm-10 col-xs-10">
+                  <select ng-model="vm.user.languageId" required style="width: 100%" ng-options="language.id as language.name for language in vm.languages">
+                </span>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="row">
+          <div class="form-top-border"></div>
+          <div class="col-sm-offset-9">
+            <button ui-sref="app.user" class="btn btn-sm btn-primary" translate="common.return"></button>
+            <button type="button" ng-click="vm.update()" ng-disabled="vm.isChanged()" class="btn btn-sm btn-primary form-btn" translate="common.update"></button>
+            <button type="button" ng-click="vm.reset()" class="btn btn-black btn-sm form-btn" translate="common.reset"></button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

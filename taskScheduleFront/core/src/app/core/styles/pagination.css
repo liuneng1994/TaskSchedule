@@ -1,0 +1,72 @@
+.select-page {
+  width: 50px;
+  text-align: center;
+}
+.pagination li a input {
+  padding: 0;
+  margin: -5px 0;
+}
+.pagination > li > button,
+.pager > li > button {
+  color: #444444;
+  background-color: #ffffff;
+  margin: 0 -1px 0 0;
+  border-color: #cccccc;
+}
+.fl-r {
+  float: right;
+  margin-right: 5px !important;
+}
+.fl-l {
+  float: left;
+  margin-right: 24px !important;
+}
+/*#region Pagination*/
+.pagination,
+.pager li > button {
+  -webkit-border-radius: 2px;
+  -webkit-background-clip: padding-box;
+  -moz-border-radius: 2px;
+  -moz-background-clip: padding;
+  border-radius: 2px;
+  background-clip: padding-box;
+}
+.ng-isolate-scope >nav >ul >li >button {
+  height: 32px;
+}
+.ng-isolate-scope >nav >ul >li {
+  margin: 0;
+  padding: 0;
+}
+.pagination-select {
+  height: 32px;
+  width: 58px;
+}
+.k-pager-wrap {
+  padding: 8px;
+}
+.k-pager-inputstyle >input {
+  margin-top: 2px;
+  height: 18px;
+  width: 42px;
+  -webkit-border-radius: 4px !important;
+  -moz-border-radius: 4px !important;
+  border-radius: 4px !important;
+  background-color: #fff;
+}
+.k-grid-edit-row .k-textbox, .k-grid-edit-row .text-box {
+  height: 28px;
+}
+.k-widget-select {
+  height: 18px;
+  width: 36px;
+  margin-top: 5px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url("Bootstrap/down.png") no-repeat;
+  background-position: 36px 5px;
+}
+span.k-widget.k-dropdown.k-header.ng-binding {
+  color: #a6a6a6;
+}

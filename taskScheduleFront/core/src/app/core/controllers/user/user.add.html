@@ -1,0 +1,146 @@
+<div class="row">
+  <div class="col-lg-12 col-sm-12 col-xs-12">
+    <div class="widget-body widget-background">
+      <form id role="form" name="userCreateForm" novalidate>
+        <div class="form-title-sky form-title-size" translate="core.user.info"></div>
+        <div class="bordered-themeprimary bordered-bottom-2 cut-off-rule" style="margin-left: -17px;margin-right: -17px"></div>
+        <div ng-show="vm.isError" class="alert alert-danger small">
+          <strong translate="common.error.check"></strong>
+          <ul>
+            <li ng-repeat="errorMessage in vm.errorMessages">{{errorMessage.field}}:{{errorMessage.message}}</li>
+          </ul>
+        </div>
+        <div class="row">
+          <table class="col-lg-5 col-sm-5 col-xs-5 col-sm-offset-1 user-table">
+            <tbody>
+              <tr>
+                <td class="td-info">
+                  <p><span class="red-star">* </span>{{'core.user.loginName' | translate}}</p>
+                </td>
+                <td class="td-input">
+                  <span class="col-lg-10 col-sm-10 col-xs-10" ng-class="{ 'has-error' : vm.errors.loginName}">
+                  <input name="loginName" type="text" class="form-control input-sm" ng-model="vm.user.loginName" value="{{vm.user.loginName}}" ng-minlength="4" ng-maxlength="20" required translate translate-attr-placeholder="core.user.loginName">
+                    <p style="color:red" ng-show="userCreateForm.loginName.$error.minlength" class="help-block">登录名太短，长度要求大于4！</p>
+                    <p style="color:red" ng-show="userCreateForm.loginName.$error.maxlength" class="help-block">登录名太长，长度要求小于20！</p>
+                  </span>
+                </td>
+              </tr>
+              <tr ng-if="vm.errors.loginName" ng-class="{ 'has-error' : vm.errors.loginName}">
+                <td class="td-info"></td>
+                <td>
+                  <span class="col-lg-10 col-sm-10 col-xs-10">
+                     <p class="help-block">{{vm.errors.loginName}}</p>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td class="td-info">
+                  <p><span class="red-star">* </span>{{'core.user.password' | translate}}</p>
+                </td>
+                <td class="td-input">
+                  <span class="col-lg-10 col-sm-10 col-xs-10" ng-class="{ 'has-error' : vm.errors.password}">
+                  <input  name="password" type="password" class="form-control input-sm" ng-model="vm.user.hashedPassword" value="{{vm.user.hashedPassword}}" ng-minlength="5" required translate translate-attr-placeholder="core.user.password">
+                  <p style="color:red" ng-show="userCreateForm.password.$invalid && !userCreateForm.password.$pristine" class="help-block">密码不能少于5位数！</p>
+                  </span>
+                </td>
+              </tr>
+              <tr ng-if="vm.errors.hashedPassword" ng-class="{ 'has-error' : vm.errors.hashedPassword}">
+                <td class="td-info"></td>
+                <td>
+                  <span class="col-lg-10 col-sm-10 col-xs-10">
+                     <p class="help-block">{{vm.errors.hashedPassword}}</p>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td class="td-info">
+                  <p><span class="red-star">* </span>{{'core.user.name' | translate}}</p>
+                </td>
+                <td class="td-input">
+                  <span class="col-lg-10 col-sm-10 col-xs-10" ng-class="{ 'has-error' : vm.errors.name}">
+                    <input name="userName" type="text" class="form-control input-sm" ng-model="vm.user.name" value="{{vm.user.name}}" ng-minlength="4" ng-maxlength="30" required translate translate-attr-placeholder="core.user.name"  >
+                      <p style="color:red" ng-show="userCreateForm.userName.$error.minlength" class="help-block">用户名太短，长度要求大于4！</p>
+                      <p style="color:red" ng-show="userCreateForm.userName.$error.maxlength" class="help-block">用户名太长，长度要求小于30！</p>
+                    <p ng-if="vm.errors.name" class="help-block">{{vm.errors.name}}</p>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td class="td-info">
+                  <p>{{'core.role.name' | translate}}</p>
+                </td>
+                <td class="td-input">
+                  <span class="col-lg-10 col-sm-10 col-xs-10">
+                    <select kendo-multi-select k-options="vm.selectOptions" k-ng-model="vm.selectedIds"></select>
+                </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <table class="col-lg-5 col-sm-5 col-xs-5 user-table">
+            <tbody>
+              <tr>
+                <td class="td-info">
+                  <p>{{'core.user.borthDate' | translate}}</p>
+                </td>
+                <td class="td-input">
+                  <span class="col-lg-10 col-sm-10 col-xs-10">
+                    <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="vm.user.borthDate" is-open="vm.opened" datepicker-options="dateOptions" close-text="Close" ng-click="vm.open($event)" placeholder="yyyy/MMMM/dd">
+                    <p ng-if="vm.errors.borthDate" class="help-block">{{vm.errors.borthDate}}</p>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td class="td-info">
+                  <p>{{'core.user.phone' | translate}}</p>
+                </td>
+                <td class="td-input">
+                  <span class="col-lg-10 col-sm-10 col-xs-10" ng-class="{ 'has-error' : vm.errors.phone}">
+                    <input type="text" class="form-control input-sm" ng-model="vm.user.phone" value="{{vm.user.phone}}" translate translate-attr-placeholder="core.user.phone">
+                    <p ng-if="vm.errors.phone" class="help-block">{{vm.errors.phone}}</p>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td class="td-info">
+                  <p><span class="red-star">* </span>{{'core.user.emailAddress' | translate}}</p>
+                </td>
+                <td class="td-input">
+                  <span class="col-lg-10 col-sm-10 col-xs-10" ng-class="{ 'has-error' : vm.errors.emailAddress}">
+                    <input name="emailAddress" type="email" class="form-control input-sm" ng-model="vm.user.emailAddress" value="{{vm.user.emailAddress}}" required translate translate-attr-placeholder="core.user.emailAddress">
+
+                    <p style="color:red" ng-show="userCreateForm.emailAddress.$invalid && !userCreateForm.emailAddress.$pristine" class="help-block">邮箱地址不正确！</p>
+
+                    <p ng-if="vm.errors.emailAddress" class="help-block">{{vm.errors.emailAddress}}</p>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td class="td-info">
+                  <p><span class="red-star">* </span>{{'core.user.language' | translate}}</p>
+                </td>
+                <td class="td-input">
+                  <span class="col-lg-10 col-sm-10 col-xs-10">
+                  <select ng-model="vm.user.languageId" required style="width: 100%" translate translate-attr-placeholder="core.user.language">
+                    <option value="" translate="common.selectLanguage"></option>
+                    <option ng-repeat="language in vm.languages" value="{{language.id}}">{{language.name}}
+                  </select>
+                </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="row">
+          <div class="form-top-border"></div>
+          <div class="col-sm-offset-9">
+            <button ui-sref="app.user" class="btn btn-sm btn-primary" translate="common.return"></button>
+            <button type="button" ng-click="vm.create()" ng-disabled="userCreateForm.$invalid" class="btn btn-sm btn-primary form-btn" translate="common.add"></button>
+            <button type="button" ng-click="vm.reset()" class="btn btn-sm btn-black form-btn" translate="common.reset"></button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

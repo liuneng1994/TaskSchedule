@@ -1,0 +1,40 @@
+﻿<!-- Loading Container -->
+<div class="loading-container" data-ng-include=" 'app/theme/controllers/layout/partials/loading.html' "></div>
+<!--  /Loading Container -->
+
+<!-- Navbar -->
+<div id="navbar" class="navbar {{settings.fixed.navbar ? 'navbar-fixed-top' : ''}}" data-ng-include=" 'app/theme/controllers/layout/partials/navbar.html' "></div>
+<!-- /Navbar -->
+
+<!-- Main -->
+<div class="main-container container-fluid">
+  <!-- Page Container -->
+  <div class="page-container">
+    <!-- Page Sidebar -->
+    <div class="page-sidebar {{settings.fixed.sidebar ? 'sidebar-fixed' : ''}}" id="sidebar" ui-view="sidebar">
+    </div>
+    <!-- /Page Sidebar -->
+
+    <!-- Chat Bar -->
+    <div id="chatbar" class="page-chatbar" data-ng-include=" 'app/theme/controllers/layout/partials/chatbar.html' ">
+    </div>
+    <!-- /Chat Bar -->
+
+    <!-- Page Content -->
+    <div class="page-content">
+        <!-- Page Breadcrumb -->
+        <div class="page-breadcrumbs {{settings.fixed.breadcrumbs ? 'breadcrumbs-fixed' : ''}}" data-ng-include=" 'app/theme/controllers/layout/partials/breadcrumbs.html' ">
+        </div>
+        <!-- /Page Breadcrumb -->
+        <!-- Page Body -->
+        <div class="page-body" ui-view="main">
+            <!-- Your Content Goes Here -->
+        </div>
+        <!-- /Page Body -->
+    </div>
+    <!-- /Page Content -->
+  </div>
+  <!-- /Page Container -->
+  <!-- Main Container -->
+</div>
+<!-- /Main -->

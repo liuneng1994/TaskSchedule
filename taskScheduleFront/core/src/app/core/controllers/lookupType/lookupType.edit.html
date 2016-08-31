@@ -1,0 +1,62 @@
+<div class="row">
+  <div class="col-lg-12 col-sm-12 col-xs-12">
+      <div class="widget-body widget-background">
+        <div class="form-title-sky form-title-size" translate="core.lookupType.info"></div>
+        <div class="bordered-themeprimary bordered-bottom-2 cut-off-rule"></div>
+
+          <form role="form" class="lookupTypeCreateForm" name="lookupTypeCreateForm" novalidate>
+
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right">
+                  <p translate="core.lookupType.code"></p>
+                </label>
+                <div class="col-sm-8">
+                          <span ng-class="{ 'has-error' : lookupTypeCreateForm.code.$invalid && lookupTypeCreateForm.code.$dirty}">
+                              <input type="text" name="code" class="form-control input-sm" translate translate-attr-placeholder="core.lookupType.code" ng-model="vm.lookupType.code" value="{{vm.lookupType.code}}" required ng-pattern="/^[A-Za-z0-9_]+$/">
+                          </span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right">
+                </label>
+                <div class="col-sm-8">
+                          <span ng-class="{ 'has-error' : lookupTypeCreateForm.code.$invalid}">
+                              <p ng-if="lookupTypeCreateForm.code.$invalid" class="help-block" translate="core.lookupType.code.error"></p>
+                          </span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right">
+                  <p translate="core.lookupType.name"></p>
+                </label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control input-sm" ng-model="vm.lookupType.name" value="{{vm.lookupType.name}}" required translate translate-attr-placeholder="core.lookupType.name">
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right">
+                  <p translate="core.lookupType.description"></p>
+                </label>
+                <div class="col-sm-8">
+                  <textarea class="form-control input-sm" ng-model="vm.lookupType.description" value="{{vm.lookupType.description}}" style="resize: none;" rows="3" translate translate-attr-placeholder="core.lookupType.description"></textarea>
+                </div>
+              </div>
+            </div>
+
+          </form>
+
+          <div style="clear: both"></div>
+          <div class="row">
+            <div class="form-top-border"></div>
+            <div class="col-sm-offset-9">
+              <button ui-sref="app.lookupType" class="btn btn-sm btn-primary" translate="common.return"></button>
+              <button type="button" ng-click="vm.update()" ng-disabled="vm.isChanged(lookupTypeCreateForm)" class="btn btn-sm btn-primary form-btn" translate="common.update"></button>
+              <button type="button" ng-click="vm.reset()" class="btn btn-black btn-sm form-btn" translate="common.reset"></button>
+            </div>
+          </div>
+      </div>
+    </div>
+</div>

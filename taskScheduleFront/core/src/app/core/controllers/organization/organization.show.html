@@ -1,0 +1,90 @@
+<div class="row">
+  <div class="col-lg-12 col-sm-12 col-xs-12">
+      <div class="widget">
+        <div class="widget-body">
+          <form role="form" name="lookupTypeCreateForm" novalidate>
+          <div class="form-title-sky form-title-size" translate="core.lookupType.info"></div>
+              <div class="bordered-themeprimary bordered-bottom-2 cut-off-rule"></div>
+              <div class="row">
+                  <table class="col-lg-10 col-sm-10 col-xs-10 col-sm-offset-1 user-table">
+                      <tbody>
+                      <tr>
+                          <td>
+                              <label translate="core.lookupType.code"></label><label>:&nbsp;&nbsp;</label><label>{{vm.lookupType.code}}</label>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td>
+                              <label translate="core.lookupType.name"></label><label>:&nbsp;&nbsp;</label><label>{{vm.lookupType.name}}</label>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td>
+                              <label translate="core.lookupType.description"></label><label>:&nbsp;&nbsp;</label><label>{{vm.lookupType.description}}</label>
+                          </td>
+                      </tr>
+                      </tbody>
+                  </table>
+              </div>
+          <div class="form-title-sky form-title-size" translate="core.lookupType.index"></div>
+              <div class="bordered-themeprimary bordered-bottom-2 cut-off-rule"></div>
+              <a ng-click="vm.addValue()" class="btn btn-primary margin-bottom-10">
+                  <i class="glyphicon glyphicon-plus"></i>
+                  <span translate="common.new"></span>
+              </a>
+              <form></form>
+              <table st-table="vm.lookupValues" class="table table-striped" st-pipe="vm.index">
+                  <thead>
+                  <tr>
+                      <th st-ratio="10" translate="common.id"></th>
+                      <th st-ratio="10" translate="core.lookupValue.code"></th>
+                      <th st-ratio="10" translate="core.lookupValue.name"></th>
+                      <th st-ratio="10" translate="core.lookupValue.order"></th>
+                      <th st-ratio="20" translate="core.lookupValue.description"></th>
+                      <th st-ratio="10" translate="common.edit"></th>
+                  </tr>
+                  </thead>
+                  <tr ng-repeat="row in vm.lookupValues">
+                      <td>{{row.id}}</td>
+                      <td><st-edit editable-text="row.code" onbeforesave="vm.checkName($data,'code')" e-required>{{row.code}}</st-edit></td>
+                      <td><st-edit editable-text="row.name" onbeforesave="vm.checkName($data,'name')" e-required>{{row.name}}</st-edit></td>
+                      <td><st-edit editable-number="row.odr" onbeforesave="vm.checkName($data,'odr')" e-required>{{row.odr}}</st-edit></td>
+                      <td><st-edit editable-text="row.description">{{row.description}}</st-edit></td>
+                      <td>
+                          <form editable-form name="rowform" onbeforesave="vm.addOrUpdate(row)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="vm.inserted == row">
+                              <button ng-disabled="rowform.$waiting" class="btn btn-sm btn-primary" translate="common.save"></button>
+                              <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel();vm.cancel(row)" 
+                              class="btn btn-sm btn-default" translate="common.cancel"></button>
+                          </form>
+                          <div class="buttons" ng-show="!rowform.$visible">
+                              <div class="grid-table-btn">
+                                <a class="btn btn-success btn-xs" ng-click="rowform.$show()" >
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                                <span translate="common.edit"></span></a>
+                              </div>
+                              <div class="grid-table-btn">
+                              <a st-delete class="btn btn-danger btn-xs" ng-click="vm.delete(row)" >
+                                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                <span translate="common.delete"></span></a>
+                            </div>
+                          </div>
+                      </td>
+                  </tr>
+                  </tbody>
+                  <tbody ng-show="vm.isValueEmpty()">
+                    <tr>
+                      <td colspan="6" class="text-center" translate="common.empty"></td>
+                    </tr>
+                  </tbody>
+                  <!--                             <tfoot>
+                                              <tr>
+                                                <td colspan="6" class="text-center">
+                                                  <div st-pagination="" st-template="app/core/controllers/pagination/pagination.footer.html"></div>
+                                                </td>
+                                              </tr>
+                                              </tfoot> -->
+              </table>
+        </div>
+      </div>
+    </div>
+</div>

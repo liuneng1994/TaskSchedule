@@ -1,0 +1,17 @@
+node_modules/
+bower_components/
+coverage/
+.sass-cache/
+.idea/
+.tmp/
+dist/
+src/lib
+src/i18n
+src/app/boot
+src/app/core
+src/app/theme
+src/app/bpm
+src/app/hdp
+bower.json
+src/static
+src/app/activiti

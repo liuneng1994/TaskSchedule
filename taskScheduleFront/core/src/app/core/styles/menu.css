@@ -1,0 +1,10 @@
+.selectinput {
+    position: absolute;
+    z-index: 1;
+    width: 80%;
+    float: left;
+}
+.selectinput-select {
+    position: relative;
+    width: 100%;
+}

@@ -1,0 +1,19 @@
+.deny-header {
+    background: #ffffff;
+    height: 280px;
+}
+.deny-containers {
+    background: rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+.deny-containers h1 {
+    font-size: 110px;
+    font-weight: 300;
+    margin: -103px 0 0 0;
+    text-align: center;
+    color: #ddd;
+}
+.deny-divider {
+    margin-top: -27px;
+    padding: 30px 0;
+}

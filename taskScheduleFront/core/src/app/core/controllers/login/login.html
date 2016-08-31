@@ -1,0 +1,96 @@
+<div class="login-container animated fadeInDown">
+    <div class="login-graphics-top bg-themeprimary"></div>
+    <div class="login-graphics-bottom bg-themeprimary"></div>
+    <div class="loginbox bg-white">
+        <form role="form" class="loginForm" name="loginForm" novalidate ng-keyup="vm.keyup(event=$event);">
+            <div class="loginbox-title" translate="core.login"></div>
+            <div class="loginbox-or">
+                <div class="or-line"></div>
+                <!--<div class="or">OR</div>-->
+            </div>
+            <div class="loginbox-textbox">
+                <input type="text" class="form-control" translate translate-attr-placeholder="core.login.name" ng-model="vm.loginUser.username" required>
+            </div>
+            <div class="loginbox-textbox" ng-class="{ 'has-error' : vm.error}">
+                <input type="password" class="form-control" translate translate-attr-placeholder="core.login.password" ng-model="vm.loginUser.password"  required>
+                <p ng-if="vm.error" class="help-block" translate="core.login.error"></p>
+            </div>
+
+            <div class="form-group">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox">
+                  <span class="text" translate="core.login.remember"></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="loginbox-forgot">
+                <!--<a href="">Forgot Password ?</a>-->
+            </div>
+
+            <div class="loginbox-submit">
+                <input type="button" class="btn btn-primary btn-block" translate translate-attr-value="core.login" ng-click="vm.login()" ng-disabled="loginForm.$invalid">
+            </div>
+        </form>
+    </div>
+    <div class="logobox">
+      <img src="app/core/assets/images/hap-logo.png" style="height: 42px;margin-left: 56px">
+    </div>
+</div>
+
+<style type="text/css">
+
+.login-bg {
+  position: relative;
+  right: 110px;
+}
+
+.login-container {
+  position: relative;
+  margin: 10% auto;
+  max-width: 300px;
+  height: 300px;
+}
+
+.login-container .loginbox {
+  position: relative;
+  top: -325px;
+  width: 300px !important;
+  height: auto !important;
+  padding: 0 0 20px 0;
+  -webkit-box-shadow: 0 0 14px rgba(0, 0, 0, .2);
+  -moz-box-shadow: 0 0 14px rgba(0, 0, 0, .2);
+  box-shadow: 0 0 14px rgba(0, 0, 0, .2)
+}
+
+.login-container .loginbox .loginbox-title {
+  position: relative;
+  text-align: center;
+  width: 100%;
+  height: 35px;
+  padding-top: 10px;
+  font-family: 'Lucida Sans', 'trebuchet MS', Arial, Helvetica;
+  font-size: 20px;
+  font-weight: normal;
+  color: #444
+}
+.login-container .logobox {
+  position: relative;
+  top: -325px;
+  width: 300px !important;
+  height: 50px !important;
+  padding: 5px;
+  margin-top: 15px;
+  -webkit-box-shadow: 0 0 14px rgba(0, 0, 0, .2);
+  -moz-box-shadow: 0 0 14px rgba(0, 0, 0, .2);
+  box-shadow: 0 0 14px rgba(0, 0, 0, .2);
+  background-color: #fff;
+  text-align: left
+}
+.loginbox >.loginForm > .form-group {
+  padding: 0 40px;
+  margin-bottom: 0;
+}
+
+</style>

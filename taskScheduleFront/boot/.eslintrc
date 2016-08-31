@@ -1,0 +1,30 @@
+{
+  "extends": "eslint:recommended",
+  "plugins": ["angular"],
+  "env": {
+    "browser": true,
+    "jquery": true,
+    "jasmine": true
+  },
+  "globals": {
+    "angular": true,
+    "module": true,
+    "inject": true
+  },
+  "rules": {
+    "eqeqeq": 0,
+    "curly": 0,
+    "no-unused-vars": 0,
+    "no-undef": 0,
+    "no-console": 0,
+    "angular/controller-name": [2,"/[A-Z].*Ctrl/"],
+    "angular/angularelement": 0,
+    "angular/di": 0,
+    "angular/module-getter": 0,
+    "angular/on-watch": 0,
+    "angular/controller-as": 0,
+    "angular/controller-as-vm": 0,
+    "angular/no-services": [2,{"directive":["$http","$q"],"controller":["$resource"]}],
+    "angular/no-private-call": [2,{"allow":["$$phase"]}]
+  }
+}

@@ -1,0 +1,10 @@
+<div ui-view="content" ng-if="!settings.tab">
+<!-- Your Content Goes Here -->
+</div>
+<div ng-if="settings.tab">
+	<tabs data="tabs" type="tabs" template-url="ui-router-tabs-custom-ui-view-template.html"></tabs>
+
+	<div autoscroll ui-view="content">
+		<!-- Your Content Goes Here -->
+	</div>
+</div>

@@ -1,0 +1,127 @@
+/*#region DropDown*/
+.dropdown-menu {
+    border: 1px solid #ccc !important;
+    -webkit-border-radius: 2px !important;
+    -webkit-background-clip: padding-box !important;
+    -moz-border-radius: 2px !important;
+    -moz-background-clip: padding !important;
+    border-radius: 2px !important;
+    background-clip: padding-box !important;
+    -webkit-box-shadow: 0 3px 20px rgba(0, 0, 0, 0.3) !important;
+    -moz-box-shadow: 0 3px 20px rgba(0, 0, 0, 0.3) !important;
+    box-shadow: 0 3px 20px rgba(0, 0, 0, 0.3) !important;
+    -webkit-transition: opacity 0.218s;
+    -moz-transition: opacity 0.218s;
+    -o-transition: opacity 0.218s;
+    transition: opacity 0.218s;
+    margin: 1px 0 0;
+    min-width: 170px;
+}
+/*#endregion DropDown*/
+/*#region Buttons*/
+.btn {
+    cursor: pointer;
+    vertical-align: middle;
+    margin: 0;
+    position: relative;
+    display: inline-block;
+    color: #ffffff;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    -webkit-transition: all 0.15s ease;
+    -moz-transition: all 0.15s ease;
+    -o-transition: all 0.15s ease;
+    transition: all 0.15s ease;
+    -webkit-border-radius: 2px;
+    -webkit-background-clip: padding-box;
+    -moz-border-radius: 2px;
+    -moz-background-clip: padding;
+    border-radius: 2px;
+    background-clip: padding-box;
+    font-size: 13px;
+}
+.btn:active,
+.btn:focus {
+    box-shadow: none !important;
+}
+/*#endregion Buttons*/
+/*#region lightgray Button*/
+.btn-lightgray,
+.btn-lightgray:focus,
+.btn-lightgray:hover {
+    background-color: #eee !important;
+    color: #444;
+    text-decoration: none;
+}
+.btn-lightgray.dropdown-toggle {
+    border-left-color: #eee;
+}
+.btn-lightgray.active {
+    background-color: #2dc3e8;
+    color: #fff;
+    border-color: #eee;
+    box-shadow: none;
+}
+.btn-lightgray.active:hover {
+    background-color: #2dc3e8;
+    color: #fff;
+    border-color: #eee;
+    box-shadow: none;
+}
+.btn-lightgray.shiny {
+    background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMSAxIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIj48bGluZWFyR3JhZGllbnQgaWQ9Imxlc3NoYXQtZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM3MGJhZmQiIHN0b3Atb3BhY2l0eT0iMSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzQ0OWNlYyIgc3RvcC1vcGFjaXR5PSIxIi8+PC9saW5lYXJHcmFkaWVudD48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2xlc3NoYXQtZ2VuZXJhdGVkKSIgLz48L3N2Zz4=);
+    background-image: -webkit-linear-gradient(linear, left top, left bottom, from(#eee), to(#ccc));
+    background-image: -moz-linear-gradient(linear, left top, left bottom, from(#eee), to(#ccc));
+    background-image: -o-linear-gradient(linear, left top, left bottom, from(#eee), to(#ccc));
+    background-image: linear-gradient(linear, left to bottom, left bottom, from(#eee), to(#ccc));
+}
+.btn-lightgray:hover,
+.open .btn-lightgray.dropdown-toggle {
+    background-color: #eee;
+    border-color: #eee;
+    color: #444;
+}
+.btn-lightgray.disabled,
+.btn-lightgray[disabled],
+fieldset[disabled] .btn-lightgray,
+.btn-lightgray.disabled:hover,
+.btn-lightgray[disabled]:hover,
+fieldset[disabled] .btn-lightgray:hover,
+.btn-lightgray.disabled:focus,
+.btn-lightgray[disabled]:focus,
+fieldset[disabled] .btn-lightgray:focus,
+.btn-lightgray.disabled:active,
+.btn-lightgray[disabled]:active,
+fieldset[disabled] .btn-lightgray:active,
+.btn-lightgray.disabled.active,
+.btn-lightgray[disabled].active,
+fieldset[disabled] .btn-lightgray.active {
+    background-color: #eee;
+    border-color: #eee;
+    zoom: 1;
+    filter: alpha(opacity=50);
+    -webkit-opacity: 0.5;
+    -moz-opacity: 0.5;
+    opacity: 0.5;
+}
+/*#endregion lightgray Button*/
+/*  #region table-condensed   */
+.table-condensed > thead > tr > th,
+.table-condensed > tbody > tr > th,
+.table-condensed > tfoot > tr > th,
+.table-condensed > thead > tr > td,
+.table-condensed > tbody > tr > td,
+.table-condensed > tfoot > tr > td {
+    padding: 0 !important;
+}
+.table-condensed {
+    outline: none;
+}
+.table-condensed button {
+    border: none !important;
+}
+.ng-valid-date-disabled {
+    padding: 5px;
+}
+/*  #endregion table-condensed   */

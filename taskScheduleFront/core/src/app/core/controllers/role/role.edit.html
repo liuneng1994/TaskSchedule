@@ -1,0 +1,87 @@
+<div class="row">
+  <div class="col-lg-12 col-sm-12 col-xs-12">
+    <div class="widget-body widget-background">
+      <form role="form" name="roleEditForm" novalidate>
+        <div class="form-title-sky form-title-size" translate="core.role.info"></div>
+          <div class="bordered-themeprimary bordered-bottom-2 cut-off-rule"></div>
+    <div class="row">
+      <table class="col-lg-5 col-sm-5 col-xs-5 col-sm-offset-1 user-table">
+        <tbody>
+        <tr>
+          <td class="td-info">
+            <p translate="core.role.code"></p>
+          </td>
+          <td class="td-input">
+            <span class="col-lg-10 col-sm-10 col-xs-10">
+              <input type="text" class="form-control input-sm" ng-model="vm.role.code" value="{{vm.role.code}}" required translate translate-attr-placeholder="core.role.code">
+            </span>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <table class="col-lg-5 col-sm-5 col-xs-5 user-table">
+        <tbody>
+        <tr>
+          <td class="td-info">
+            <p translate="core.role.name"></p>
+          </td>
+          <td class="td-input">
+                <span class="col-lg-10 col-sm-10 col-xs-10">
+                    <input type="text" class="form-control input-sm" ng-model="vm.role.name" value="{{vm.role.name}}" required translate translate-attr-placeholder="core.role.name">
+                </span>
+          </td>
+        </tr>
+        <tr>
+          <td class="td-info">
+            <p translate="core.role.description"></p>
+          </td>
+          <td class="td-input">
+                <span class="col-lg-10 col-sm-10 col-xs-10">
+                    <input type="text" class="form-control input-sm" ng-model="vm.role.description" value="{{vm.role.description}}" required translate translate-attr-placeholder="core.role.description">
+                </span>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+          <div class="form-title-sky form-title-size" translate="core.role.menuPermissions"></div>
+          <div class="bordered-gray bordered-bottom-1 margin-bottom-10"></div>
+          <div class="row">
+            <div class="checkbox" >
+              <treecontrol class="tree-classic"
+                 tree-model="vm.menuTree"
+                 options="vm.treeOptions"
+                 expanded-nodes="vm.expandNodeData"
+                 >
+                  <label ng-if="node.isLeaf&&node.isParent">
+                    <input type="checkbox" id="{{node.id}}" value="{{node.id}}" ng-checked="vm.isChidrenSelected(node.id,node.childrenIds)||vm.isSelected(node.parentId,node.id)" ng-click="vm.updateSelection($event,node.id,node.childrenIds)"/>
+                    <span class="text"></span>
+                  </label>
+                  <label ng-if="node.isLeaf&&!node.isParent">
+                    <input type="checkbox" id="{{node.id}}" value="{{node.id}}" ng-checked="vm.isSelected(node.parentId,node.id)" ng-click="vm.updateSelection($event,node.id,'')"/>
+                    <span class="text"></span>
+                  </label>
+              {{node.name}}
+              <span ng-if="node.isLeaf">
+                {{node.premission}}
+              </span>
+              </treecontrol>
+            </div>
+
+              <input type="hidden" class="form-control input-sm" translate translate-attr-placeholder="core.resource.id" ng-model="vm.resourceIds" value="{{vm.resourceIds}}" >     
+          </div>
+
+        <div class="row">
+          <div class="form-top-border"></div>
+          <div class="col-sm-offset-9">
+            <button ui-sref="app.role" class="btn btn-sm btn-primary" translate="common.return"></button>
+            <button type="button" ng-click="vm.update()" ng-disabled="vm.isChanged()" class="btn btn-sm btn-primary form-btn" translate="common.update"></button>
+            <button type="button" ng-click="vm.reset()" class="btn btn-black btn-sm form-btn" translate="common.reset"></button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  </div>
+</div>

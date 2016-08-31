@@ -1,0 +1,67 @@
+<div class="row">
+  <div class="col-lg-12 col-sm-12 col-xs-12">
+    <div>
+      <div class="widget-body">
+        <a ui-sref="app.user.add" class="btn btn-primary btn-sm margin-bottom-10">
+          <i class="glyphicon glyphicon-plus"></i>
+          <span translate="common.new"></span>
+        </a>
+        <table st-table="vm.users" class="table table-striped" st-pipe="vm.index">
+          <thead>
+          <tr>
+            <th st-ratio="10" translate="common.id"></th>
+            <th st-ratio="10" translate="core.user.loginName"></th>
+            <th st-ratio="20" translate="core.user.name"></th>
+            <th st-ratio="20" translate="core.user.Orgname"></th>
+            <th st-ratio="10" translate="core.user.phone"></th>
+            <th st-ratio="15" translate="core.user.emailAddress"></th>
+            <th st-ratio="15" style="min-width: 165px;" translate="common.options"></th>
+          </tr>
+          </thead>
+          <tbody ng-show="!vm.isLoading">
+          <tr ng-repeat="row in vm.users">
+            <td>{{row.id}}</td>
+            <td>{{row.loginName}}</td>
+            <td>{{row.name}}</td>
+            <td>{{row.organization.name}}</td>
+            <td>{{row.phone}}</td>
+            <td>{{row.emailAddress}}</td>
+            <td>
+            <div class="buttons" ng-show="!rowform.$visible">
+              <div class="grid-table-btn">
+                <a class="btn btn-success btn-xs" ng-click="vm.edit(row.id)">
+                  <i class="fa fa-pencil" aria-hidden="true"></i>
+                  <span translate="common.edit"></span></a>
+              </div>
+              <div class="grid-table-btn">
+                <a st-delete class="btn btn-danger btn-xs" ng-click="vm.delete(row.id)" >
+                  <i class="fa fa-trash-o" aria-hidden="true"></i>
+                  <span translate="common.delete"></span></a>
+              </div>
+            </div>
+            </td>
+          </tr>
+          </tr>
+          </tbody>
+          <tbody ng-show="vm.isLoading">
+          <tr>
+            <td colspan="7" class="text-center">Loading ...</td>
+          </tr>
+          </tbody>
+          <tbody ng-show="vm.isEmpty()">
+            <tr>
+              <td colspan="7" class="text-center" translate="common.empty"></td>
+            </tr>
+          </tbody>
+          <tfoot>
+          <tr>
+            <td colspan="7" class="text-center">
+              <div st-pagination="" st-template="app/core/controllers/table/pagination/pagination.footer.html"></div>
+            </td>
+          </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

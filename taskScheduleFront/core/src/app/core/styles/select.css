@@ -1,0 +1,18 @@
+.ui-select-multiple.ui-select-bootstrap {
+    min-height: 30px !important;
+}
+.ui-select-multiple.ui-select-bootstrap .ui-select-match-item {
+    outline: 0;
+    margin-top: -2px !important;
+    margin-left: 2px !important;
+    margin-bottom: 0 !important;
+    margin-right: 0 !important;
+}
+.ui-select-multiple.ui-select-bootstrap input.ui-select-search {
+    background-color: transparent !important; /* To prevent double background when disabled */
+    border: none;
+    outline: none;
+    height: 1.666666em;
+    margin-bottom: 3px;
+    margin-top: 3px;
+}

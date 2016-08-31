@@ -1,0 +1,47 @@
+<div class="k-pager-wrap k-grid-pager k-widget k-floatwrap" data-role="pager">
+  <button ng-click="selectPage(1)" class="k-link k-pager-nav k-pager-first k-state-disabled" ng-disabled="currentPage == 1">
+    <span class="k-icon k-i-seek-w"></span>
+  </button>
+  <button ng-click="selectPage(currentPage - 1)" class="k-link k-pager-nav  k-state-disabled" ng-disabled="currentPage == 1">
+    <span class="k-icon k-i-arrow-w">上一页</span>
+  </button>
+  <span class="k-pager-input k-label">Page
+    <a><page-select class="k-pager-inputstyle"></page-select></a>&nbsp;of {{numPages}}
+  </span>
+  <button ng-click="selectPage(currentPage + 1)" class="k-link k-pager-nav  k-state-disabled" ng-disabled="currentPage == numPages">
+    <span class="k-icon k-i-arrow-e">下一页</span>
+  </button>
+  <button ng-click="selectPage(numPages)" class="k-link k-pager-nav k-pager-last k-state-disabled" ng-disabled="currentPage == numPages">
+    <span class="k-icon k-i-seek-e">最后一页</span>
+  </button>
+  <span class="k-pager-sizes k-label fl-l">
+    <!--<span title="" class="k-widget k-dropdown k-header" unselectable="on" role="listbox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-owns="" aria-disabled="false" aria-busy="false" style="" aria-activedescendant="14de52dd-b47b-4d85-8b6b-9e6c486ec768">
+      <span unselectable="on" class="k-dropdown-wrap k-state-default">
+        <span unselectable="on" class="k-input">10</span>
+        <span unselectable="on" class="k-select">
+          <span unselectable="on" class="k-icon k-i-arrow-s">select</span>
+        </span>
+      </span>
+      <select data-role="dropdownlist" style="display: none;">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="20">20</option>
+      </select>
+    </span>-->
+    <span title="" class="k-widget k-dropdown k-header" unselectable="on" role="listbox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-owns="" aria-disabled="false" aria-busy="false" aria-activedescendant="7593e461-65f4-4acd-97ad-964bd1c530c7" style="">
+      <select style="border-radius: 4px;-webkit-border-radius: 4px;-moz-border-radius: 4px;" class="k-widget-select" ng-model="stItemsByPage" ng-options="page for page in [5,10,15]"></select>
+      {{ 'smartTable.pagination.itemsPerPage' | translate}}
+    </span>
+  </span>
+
+  <span class="k-pager-info k-label">
+    <span ng-if="totalItemCount === 0" class="fl-r" translate="smartTable.pagination.empty">
+    </span>
+    <span ng-if="currentPage * stItemsByPage >= totalItemCount && totalItemCount != 0" class="fl-r">
+        {{ 'smartTable.pagination.display' | translate}} {{(currentPage-1) * stItemsByPage + 1}} - {{totalItemCount}} {{ 'smartTable.pagination.total' | translate}} {{totalItemCount}} {{ 'smartTable.pagination.items' | translate}}
+    </span>
+    <span ng-if="currentPage * stItemsByPage < totalItemCount && totalItemCount != 0" class="fl-r">
+        {{ 'smartTable.pagination.display' | translate}} {{(currentPage-1) * stItemsByPage  + 1}} - {{currentPage * stItemsByPage}} {{ 'smartTable.pagination.total' | translate}} {{totalItemCount}} {{ 'smartTable.pagination.items' | translate}}
+    </span>
+  </span>
+</div>

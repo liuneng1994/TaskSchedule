@@ -1,0 +1,21 @@
+a {
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+}
+ul.navbar-nav {
+  margin-left: 40px;
+}
+.navbar-nav > li {
+  float: left;
+}
+.navbar-nav > li > a {
+  padding-top: 12px;
+  padding-bottom: 13px;
+  color: #fff;
+  cursor: pointer;
+}
+.navbar .navbar-inner .navbar-header .navbar-account .setting a {
+  cursor: pointer;
+}

@@ -1,0 +1,4 @@
+<ul class="nav navbar-nav navbar" ng-controller="MenuTopCtrl as vm">
+  <li ng-repeat="menu in vm.menus" ui-sref-active=""><a ng-click="vm.changeSideMenus(menu.id)"><span class="menu-text"> {{menu.name}} </span></a>
+  </li>
+</ul>
