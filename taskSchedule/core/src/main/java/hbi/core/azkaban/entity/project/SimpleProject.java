@@ -1,14 +1,12 @@
 package hbi.core.azkaban.entity.project;
 
-import java.util.Date;
-
 /**
  * Created by liuneng on 16-8-30.
  */
 public class SimpleProject {
     private String projectId;
     private String projectName;
-    private Date createdTime;
+    private Long createdTime;
 
     public String getProjectId() {
         return projectId;
@@ -28,11 +26,11 @@ public class SimpleProject {
         return this;
     }
 
-    public Date getCreatedTime() {
+    public Long getCreatedTime() {
         return createdTime;
     }
 
-    public SimpleProject setCreatedTime(Date createdTime) {
+    public SimpleProject setCreatedTime(Long createdTime) {
         this.createdTime = createdTime;
         return this;
     }

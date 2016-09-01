@@ -12,6 +12,7 @@ import hbi.core.azkaban.util.RequestUtils;
 import org.apache.log4j.Logger;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by 刘能 on 2016/8/31.
@@ -40,16 +41,16 @@ public class ProjectServiceImpl implements ProjectService {
     public List<SimpleProject> getAllProjects() {
         HttpResponse<String> response;
         try {
-            response = RequestUtils.post(RequestUrl.INDEX)
-                    .field("action", "create")
+            response = RequestUtils.get(RequestUrl.INDEX)
+                    .queryString("ajax", "fetchallprojects")
                     .asString();
         } catch (UnirestException e) {
             logger.error("查询工程列表失败", e);
             throw new IllegalStateException("查询工程列表失败", e);
         }
-        String projects = response.getBody();
-        List<SimpleProject> list = gson.fromJson(projects, new TypeToken<List<SimpleProject>>() {
+        Map<String, List<SimpleProject>> projects = gson.fromJson(response.getBody(), new TypeToken<Map<String, List<SimpleProject>>>() {
         }.getType());
+        List<SimpleProject> list = projects.get("projects");
         return list;
     }
 

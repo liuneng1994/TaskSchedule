@@ -6,7 +6,6 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 import hbi.core.azkaban.service.FlowService;
 import hbi.core.azkaban.util.RequestUrl;
 import hbi.core.azkaban.util.RequestUtils;
-import hbi.core.azkaban.util.ResultObj;
 import org.apache.log4j.Logger;
 
 /**
@@ -15,13 +14,13 @@ import org.apache.log4j.Logger;
 public class FlowServiceImpl implements FlowService {
     private static Logger logger = Logger.getLogger(FlowService.class);
     private HttpResponse<JsonNode> response;
+
     @Override
     public Object Fetchflows(String projectName) {
         try {
-            response= RequestUtils.get(RequestUrl.MANAGER)
-                    .queryString("session.id","717447d3-208e-4ab9-90ca-e5044289d0ed")
-                    .queryString("ajax","fetchprojectflows")
-                    .queryString("project",projectName)
+            response = RequestUtils.get(RequestUrl.MANAGER)
+                    .queryString("ajax", "fetchprojectflows")
+                    .queryString("project", projectName)
                     .asJson();
 
         } catch (UnirestException e) {
@@ -31,5 +30,5 @@ public class FlowServiceImpl implements FlowService {
         return response.getBody().getObject();
     }
 
-    }
+}
 
