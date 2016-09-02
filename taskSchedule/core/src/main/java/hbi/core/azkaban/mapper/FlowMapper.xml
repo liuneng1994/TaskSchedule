@@ -24,7 +24,7 @@
     </update>
 
     <insert id="insert" parameterType="Flow">
-        INSERT INTO project_flows(project_id,version,flow_id,modified_time,json)
-        VALUES (#{projectId},#{version},#{flowId},#{modifiedTime},#{json})
+        INSERT INTO project_flows(project_id,version,flow_id,modified_time,encoding_type,json)
+        VALUES (#{projectId},#{version},#{flowId},#{modifiedTime},1,#{json})
     </insert>
 </mapper>

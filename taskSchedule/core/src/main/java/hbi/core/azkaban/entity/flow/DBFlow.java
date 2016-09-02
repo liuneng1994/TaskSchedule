@@ -3,7 +3,8 @@ package hbi.core.azkaban.entity.flow;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by liuneng on 16-8-30.
@@ -14,6 +15,9 @@ public class DBFlow {
     public DBFlow() {
         object = new JSONObject();
         object.put("mailCreator", "default");
+        object.put("props", new JSONArray());
+        object.put("layedout", false);
+        object.put("metadata", new JSONObject());
     }
 
     public DBFlow(JSONObject object) {
@@ -102,7 +106,11 @@ public class DBFlow {
     }
 
     public DBFlow setVersion(int version) {
-        object.put("version",version);
+        object.put("version", version);
         return this;
+    }
+
+    public String toJSON() {
+        return object.toString();
     }
 }

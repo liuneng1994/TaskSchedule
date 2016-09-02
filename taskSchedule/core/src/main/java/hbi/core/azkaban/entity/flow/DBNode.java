@@ -4,11 +4,14 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 /**
  * Created by liuneng on 16-8-30.
+ */
+
+/**
+ * 请先判断是否为EmbeddedNode再使用
  */
 public class DBNode {
     private JSONObject object;
@@ -38,6 +41,11 @@ public class DBNode {
         return this;
     }
 
+    /**
+     * 依赖的job id
+     *
+     * @return
+     */
     public List<String> getIn() {
         List<String> inList = new ArrayList<>();
         if (object.has("in")) {
@@ -70,5 +78,9 @@ public class DBNode {
     public DBNode setType(String type) {
         object.put("type", type);
         return this;
+    }
+
+    public String toJSON() {
+        return object.toString();
     }
 }
