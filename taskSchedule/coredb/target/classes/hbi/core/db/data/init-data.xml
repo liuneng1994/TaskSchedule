@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hap>
+    <data>
+        <!--
+        <record table="sys_language" id="sys_language_english">
+            <field name="lang_code">en_US</field>
+            <field name="name">English</field>
+        </record>
+        -->
+        <record table="demo_menu" id="demo_menu_system_manage">
+            <field name="version">0</field>
+        </record>
+        <record table="demo_menu_tl" id="demo_menu_system_manage_en_US">
+            <field name="menu_id" ref="demo_menu_system_manage"/>
+            <field name="lang">en_US</field>
+            <field name="name">Setting</field>
+        </record>
+        <record table="demo_menu_tl" id="demo_menu_system_manage_zh_CN">
+            <field name="menu_id" ref="demo_menu_system_manage"/>
+            <field name="lang">zh_CN</field>
+            <field name="name">设置</field>
+        </record>
+    </data>
+</hap>

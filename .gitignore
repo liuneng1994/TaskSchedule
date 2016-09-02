@@ -6,3 +6,12 @@
 *.log
 *.iml
 *.info
+**.iml
+**.log
+**.iml
+**.info
+*.iml
+taskSchedule/core/overlays/hap.core-ui-1.0-20160830.055001-3.info
+taskSchedule/coredb/core-db.iml
+*.iml
+taskSchedule/core/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst

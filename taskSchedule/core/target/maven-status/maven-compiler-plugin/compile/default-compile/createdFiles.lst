@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 hbi\core\Parameters\flow\FlowObj.class
 hbi\core\azkaban\service\impl\ScheduleFlowServiceImpl.class
 hbi\core\azkaban\service\impl\ProjectServiceImpl$1.class
@@ -25,3 +26,5 @@ hbi\core\azkaban\service\impl\FlowServiceImpl.class
 hbi\core\azkaban\util\RequestUrl.class
 hbi\core\controller\DemoMenuController.class
 hbi\core\azkaban\service\impl\ProjectServiceImpl.class
+=======
+>>>>>>> origin/master

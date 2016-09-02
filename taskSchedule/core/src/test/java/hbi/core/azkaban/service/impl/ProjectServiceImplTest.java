@@ -2,6 +2,7 @@ package hbi.core.azkaban.service.impl;
 
 import hbi.core.azkaban.entity.project.SimpleProject;
 import hbi.core.azkaban.service.ProjectService;
+import org.json.JSONObject;
 import org.junit.*;
 
 import java.util.List;
@@ -22,7 +23,6 @@ public class ProjectServiceImplTest {
      */
     @Ignore
     public void testCreateProject() throws Exception {
-
     }
 
     /**
