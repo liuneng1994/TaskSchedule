@@ -1,9 +1,6 @@
 package hbi.core.azkaban.service;
 
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.JsonNode;
-import hbi.core.Parameters.flow.FlowObj;
-import hbi.core.azkaban.entity.flow.Flow;
+import hbi.core.azkaban.flow.FlowObj;
 import hbi.core.azkaban.util.ResultObj;
 
 /**

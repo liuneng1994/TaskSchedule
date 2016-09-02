@@ -1,8 +1,6 @@
 package hbi.core.azkaban.controller;
 
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.JsonNode;
-import hbi.core.Parameters.flow.FlowObj;
+import hbi.core.azkaban.flow.FlowObj;
 import hbi.core.azkaban.service.ScheduleFlowService;
 import hbi.core.azkaban.util.ResultObj;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * Created by 邓志龙 on 2016/8/31.

@@ -10,6 +10,6 @@
     </bean>
     <bean name="ScheduleFlowService" class="hbi.core.azkaban.service.impl.ScheduleFlowServiceImpl">
     </bean>
-    <bean name="FlowService" class="hbi.core.azkaban.service.impl.FlowServiceImpl">
+    <bean name="FlowService" class="hbi.core.azkaban.service.impl.ExeFlowServiceImpl">
     </bean>
 </beans>

@@ -5,7 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 
-public class FlowServiceImplTest {
+public class ExeExeFlowServiceImplTest {
 
     @Before
     public void before() throws Exception {

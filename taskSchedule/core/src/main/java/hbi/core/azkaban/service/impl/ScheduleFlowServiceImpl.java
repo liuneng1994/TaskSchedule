@@ -3,15 +3,12 @@ package hbi.core.azkaban.service.impl;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.exceptions.UnirestException;
-import hbi.core.Parameters.flow.FlowObj;
+import hbi.core.azkaban.flow.FlowObj;
 import hbi.core.azkaban.service.ScheduleFlowService;
 import hbi.core.azkaban.util.RequestUrl;
 import hbi.core.azkaban.util.RequestUtils;
 import hbi.core.azkaban.util.ResultObj;
 import org.apache.log4j.Logger;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * Created by 邓志龙 on 2016/8/31.
@@ -29,7 +26,6 @@ public class ScheduleFlowServiceImpl implements ScheduleFlowService {
             ResultObj result=new ResultObj();
         try {
             response=RequestUtils.post(RequestUrl.SCHEDULE).field("ajax","scheduleFlow")
-                    .field("session.id","34b73556-ed93-4642-abb4-d4d0408ab1c7")
                     .field("projectName",flow.getProjectName())
                     .field("projectId",flow.getProjectId())
                     .field("flow",flow.getFlowName())
@@ -59,9 +55,9 @@ public class ScheduleFlowServiceImpl implements ScheduleFlowService {
             }
         } catch (UnirestException e) {
             result.setCode(0);
-            result.setMessage("网络错误，请重试！");
-           logger.error("网络错误，请重试！");
-            throw new IllegalArgumentException("网络错误，请重试！", e);
+            result.setMessage("工程错误或调度时间错误");
+           logger.error("工程错误或调度时间错误");
+            throw new IllegalArgumentException("工程错误或调度时间错误", e);
 
 
         }
@@ -74,7 +70,6 @@ public class ScheduleFlowServiceImpl implements ScheduleFlowService {
         ResultObj result=new ResultObj();
         try {
             response=RequestUtils.post(RequestUrl.SCHEDULE).field("action","removeSched")
-                    .field("session.id","f4b73716-afb4-445e-87be-09ff9ba5146d")
                     .field("scheduleId",id)
                     .asJson();
             System.out.println(response.getBody().getObject().toString());
@@ -91,9 +86,9 @@ public class ScheduleFlowServiceImpl implements ScheduleFlowService {
             }
         } catch (UnirestException e) {
             result.setCode(0);
-            result.setMessage("网络错误，请重试！");
-            logger.error("网络错误，请重试！");
-            throw new IllegalArgumentException("网络错误，请重试！", e);
+            result.setMessage("此项目不存在或没有运行，请刷新后重试");
+            logger.error("此项目不存在或没有运行，请刷新后重试");
+            throw new IllegalArgumentException("此项目不存在或没有运行，请刷新后重试", e);
         }
         return result;
     }
