@@ -12,7 +12,6 @@ import java.util.List;
  *
  */
 public interface RecordService {
-    public void fetchAllProjectHistory();
     public List<String> fetchExecutionJobLogs(String sessionId, String execId, String jobId, int offset, int length);
 
     /**
@@ -21,19 +20,14 @@ public interface RecordService {
     public RECExecutionHistory fetchFlowExecution(String sessionId, String execId);
 
     /**
-     * 获取自某个时刻之后被更新的job的信息
+     * 获取自某个时刻之后被执行的job的信息
      */
     public RECExecutionSince fetchFlowExecInfoSince(String sessionId, String execId, Date date);
 
     /**
-     *  获取自某个时刻之后被更新的job的信息
+     *  获取自某个时刻之后被执行的job的信息
      * @param lastUpdateTime 距离1976年的毫秒数
      */
     public RECExecutionSince fetchFlowExecInfoSince(String sessionId, String execId, long lastUpdateTime);
 
-    /**
-     * 获取流信息
-     */
-
-    public void fetchFlowInfo(String sessionId,String flowId);
 }

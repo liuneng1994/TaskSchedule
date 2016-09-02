@@ -1,6 +1,5 @@
 package hbi.core.azkaban.service.impl;
 
-import com.google.gson.Gson;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import hbi.core.azkaban.entity.record.RECExecutionHistory;
@@ -8,7 +7,6 @@ import hbi.core.azkaban.entity.record.RECExecutionSince;
 import hbi.core.azkaban.service.RecordService;
 import hbi.core.azkaban.util.RequestUrl;
 import hbi.core.azkaban.util.RequestUtils;
-import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.log4j.Logger;
 import org.json.JSONObject;
 
@@ -25,22 +23,8 @@ import java.util.List;
 public class RecordServiceImpl implements RecordService {
     private Logger logger = Logger.getLogger(RecordServiceImpl.class);
 
-    public void fetchAllProjectHistory(){
-        HttpResponse<String> response;
-        try {
-            response = RequestUtils.get(RequestUrl.HISTORY)
-                    .queryString("azkaban.browser.session.id","636aa0f2-22a1-4770-a012-ba60d8aee492")
-                    .asString();
-        } catch (UnirestException e) {
-            logger.error("查询工程历史列表失败", e);
-            throw new IllegalStateException("查询工程历史列表失败", e);
-        }
-        String projectsHistory = response.getBody();
-//        System.out.println(projectsHistory);
-    }
-
     /**
-     * 获取job的执行记录，记录列表从offset开始，最多length个字符
+     * 获取执行流中的job执行记录，记录列表从offset开始，最多length个字符
      * length如果小于1，将采用默认值：int的最大值
      */
     public List<String> fetchExecutionJobLogs(String sessionId, String execId, String jobId, int offset, int length){
@@ -128,25 +112,6 @@ public class RecordServiceImpl implements RecordService {
         RECExecutionSince recExecution = new RECExecutionSince();
         recExecution.setJsonObject(new JSONObject(responseData));
         return recExecution;
-    }
-
-    @Override
-    public void fetchFlowInfo(String sessionId, String flowId) {
-        HttpResponse<String> response = null;
-        try {
-            response = RequestUtils.get(RequestUrl.EXECUTOR)
-                    .queryString("session.id",sessionId)
-                    .queryString("flowId",flowId)
-                    .queryString("ajax","flowInfo")
-                    .asString();
-        } catch (UnirestException e) {
-            //logger.error("查询"+lastUpdateTime+"时刻，流执行结果失败", e);
-//            throw new IllegalStateException("查询"+lastUpdateTime+"时刻，流执行结果失败", e);
-        }
-        String responseData = response.getBody();
-//        String escapeHtml = StringEscapeUtils.escapeHtml(responseData);
-//        System.out.println(escapeHtml);
-        System.out.println(responseData);
     }
 
     private List<String> splitStringToList(String logMsg){

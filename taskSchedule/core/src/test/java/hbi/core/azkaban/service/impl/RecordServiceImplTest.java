@@ -73,12 +73,4 @@ public class RecordServiceImplTest {
         String execId = "26";
         recordServiceImpl.fetchFlowExecInfoSince(sessionId,execId,new Date(10));
     }
-
-    @Test
-    public void testFetchFlowInfo() throws Exception {
-        String sessionId = "8abc927b-e671-4e6e-bead-41b560d3b1bf";
-        String flowId = "bar";
-        recordServiceImpl.fetchFlowInfo(sessionId,flowId);
-    }
-
 }

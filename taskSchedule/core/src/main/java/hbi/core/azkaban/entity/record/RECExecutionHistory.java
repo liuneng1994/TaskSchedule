@@ -1,6 +1,5 @@
 package hbi.core.azkaban.entity.record;
 
-import org.json.JSONObject;
 
 /**
  * Created by yyz on 2016/9/2.

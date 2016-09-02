@@ -6,3 +6,7 @@
 *.log
 *.iml
 *.info
+**.iml
+**.log
+**.iml
+**.info
