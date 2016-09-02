@@ -11,8 +11,8 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Maven: org.liquibase:liquibase-groovy-dsl:1.2.1" level="project" />
     <orderEntry type="library" name="Maven: org.codehaus.groovy:groovy-sql:2.4.1" level="project" />
-    <orderEntry type="library" name="Maven: org.codehaus.groovy:groovy:2.4.1" level="project" />
     <orderEntry type="library" name="Maven: org.liquibase:liquibase-core:3.4.2" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.groovy:groovy:2.4.1" level="project" />
     <orderEntry type="library" name="Maven: org.codehaus.groovy:groovy-all:2.4.1" level="project" />
     <orderEntry type="library" name="Maven: org.codehaus.groovy:groovy-xml:2.4.1" level="project" />
   </component>
