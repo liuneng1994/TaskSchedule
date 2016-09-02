@@ -1,11 +1,14 @@
 package hbi.core.azkaban.service;
 
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.JsonNode;
+import hbi.core.azkaban.entity.flow.DBFlow;
 
 /**
- * Created by 邓志龙 on 2016/8/31.
+ * Created by liuneng on 16-9-1.
  */
 public interface FlowService {
-    Object Fetchflows(String projectName);
+    int createFlow(DBFlow flow);
+
+    int updateFlow(DBFlow flow);
+
+    DBFlow getFlowByProjectIdAndVersionAndFlowId(int projectId, int version, String flowId);
 }

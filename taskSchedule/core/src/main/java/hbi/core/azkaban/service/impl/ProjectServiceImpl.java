@@ -6,12 +6,14 @@ import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import hbi.core.azkaban.entity.project.SimpleProject;
+import hbi.core.azkaban.mapper.ProjectMapper;
 import hbi.core.azkaban.service.ProjectService;
 import hbi.core.azkaban.util.RequestUrl;
 import hbi.core.azkaban.util.RequestUtils;
 import org.apache.log4j.Logger;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by 刘能 on 2016/8/31.
@@ -19,6 +21,7 @@ import java.util.List;
 public class ProjectServiceImpl implements ProjectService {
     private Logger logger = Logger.getLogger(ProjectServiceImpl.class);
     private Gson gson = new Gson();
+    private ProjectMapper projectMapper;
 
     @Override
     public boolean createProject(String projectName, String description) {
@@ -32,7 +35,7 @@ public class ProjectServiceImpl implements ProjectService {
             throw new IllegalStateException("创建工程失败", e);
         }
         String status = response.getBody().getObject().getString("status");
-        //TODO 需要更新工程版本号
+        projectMapper.updateActiveProjectVersion(projectName, 1);
         return "success".equals(status);
     }
 
@@ -40,16 +43,16 @@ public class ProjectServiceImpl implements ProjectService {
     public List<SimpleProject> getAllProjects() {
         HttpResponse<String> response;
         try {
-            response = RequestUtils.post(RequestUrl.INDEX)
-                    .field("action", "create")
+            response = RequestUtils.get(RequestUrl.INDEX)
+                    .queryString("ajax", "fetchallprojects")
                     .asString();
         } catch (UnirestException e) {
             logger.error("查询工程列表失败", e);
             throw new IllegalStateException("查询工程列表失败", e);
         }
-        String projects = response.getBody();
-        List<SimpleProject> list = gson.fromJson(projects, new TypeToken<List<SimpleProject>>() {
+        Map<String, List<SimpleProject>> projects = gson.fromJson(response.getBody(), new TypeToken<Map<String, List<SimpleProject>>>() {
         }.getType());
+        List<SimpleProject> list = projects.get("projects");
         return list;
     }
 
@@ -66,5 +69,4 @@ public class ProjectServiceImpl implements ProjectService {
         }
         return true;
     }
-
 }

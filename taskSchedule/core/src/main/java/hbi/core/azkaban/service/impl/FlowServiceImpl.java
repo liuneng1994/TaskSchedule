@@ -1,35 +1,44 @@
 package hbi.core.azkaban.service.impl;
 
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.JsonNode;
-import com.mashape.unirest.http.exceptions.UnirestException;
+import hbi.core.azkaban.dto.Flow;
+import hbi.core.azkaban.entity.flow.DBFlow;
+import hbi.core.azkaban.mapper.FlowMapper;
 import hbi.core.azkaban.service.FlowService;
-import hbi.core.azkaban.util.RequestUrl;
-import hbi.core.azkaban.util.RequestUtils;
-import hbi.core.azkaban.util.ResultObj;
-import org.apache.log4j.Logger;
+import org.json.JSONObject;
 
 /**
- * Created by 邓志龙 on 2016/8/31.
+ * Created by liuneng on 16-9-1.
  */
 public class FlowServiceImpl implements FlowService {
-    private static Logger logger = Logger.getLogger(FlowService.class);
-    private HttpResponse<JsonNode> response;
-    @Override
-    public Object Fetchflows(String projectName) {
-        try {
-            response= RequestUtils.get(RequestUrl.MANAGER)
-                    .queryString("session.id","717447d3-208e-4ab9-90ca-e5044289d0ed")
-                    .queryString("ajax","fetchprojectflows")
-                    .queryString("project",projectName)
-                    .asJson();
+    private FlowMapper flowMapper;
 
-        } catch (UnirestException e) {
-            logger.error("网络错误，请重试！");
-            throw new IllegalArgumentException("网络错误，请重试！", e);
-        }
-        return response.getBody().getObject();
+    @Override
+    public int createFlow(DBFlow flow) {
+        Flow flowDto = new Flow();
+        flowDto.setFlowId(flow.getFlowId())
+                .setProjectId(flow.getProjectId())
+                .setModifiedTime(System.currentTimeMillis())
+                .setVersion(flow.getVersion())
+                .setJson(flow.toJSON());
+        int result = flowMapper.insert(flowDto);
+        return result;
     }
 
-}
+    @Override
+    public int updateFlow(DBFlow flow) {
+        Flow flowDto = new Flow();
+        flowDto.setFlowId(flow.getFlowId())
+                .setProjectId(flow.getProjectId())
+                .setModifiedTime(System.currentTimeMillis())
+                .setVersion(flow.getVersion())
+                .setJson(flow.toJSON());
+        return flowMapper.update(flowDto);
+    }
 
+
+    @Override
+    public DBFlow getFlowByProjectIdAndVersionAndFlowId(int projectId, int version, String flowId) {
+        Flow flow = flowMapper.get(projectId, version, flowId);
+        return new DBFlow(new JSONObject(flow.getJson()));
+    }
+}
