@@ -12,4 +12,6 @@ public class RequestUrl {
     public final static String INDEX = "index";
     public static final String SCHEDULE="schedule";
     public static final String MANAGER="manager";
+    public static final String HISTORY="manager";
+    public static final String EXECUTOR="executor";
 }

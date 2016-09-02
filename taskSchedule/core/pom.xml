@@ -44,17 +44,22 @@
       <type>war</type>
       <version>${hap.version}</version>
     </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+    </dependency>
   </dependencies>
   <repositories>
-    <repository>
-      <id>central</id>
-      <name>Ali Repository</name>
-      <url>http://maven.aliyun.com/nexus/content/groups/public/?spm=0.0.0.0.izYaMD</url>
-      <layout>default</layout>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </repository>
+    <!--<repository>-->
+      <!--<id>central</id>-->
+      <!--<name>Ali Repository</name>-->
+      <!--<url>http://maven.aliyun.com/nexus/content/groups/public/?spm=0.0.0.0.izYaMD</url>-->
+      <!--<layout>default</layout>-->
+      <!--<snapshots>-->
+        <!--<enabled>false</enabled>-->
+      <!--</snapshots>-->
+    <!--</repository>-->
     <repository>
       <id>central</id>
       <name>Central Repository</name>
@@ -165,6 +170,13 @@
             <artifactId>groovy-xml</artifactId>
             <version>2.4.6</version>
           </dependency>
+          <!-- https://mvnrepository.com/artifact/org.apache.directory.studio/org.apache.commons.lang -->
+          <dependency>
+            <groupId>org.apache.directory.studio</groupId>
+            <artifactId>org.apache.commons.lang</artifactId>
+            <version>2.6</version>
+          </dependency>
+
 
         </dependencies>
         <executions>
