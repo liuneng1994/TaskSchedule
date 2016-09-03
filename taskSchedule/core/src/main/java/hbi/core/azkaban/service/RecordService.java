@@ -12,22 +12,22 @@ import java.util.List;
  *
  */
 public interface RecordService {
-    public List<String> fetchExecutionJobLogs(String sessionId, String execId, String jobId, int offset, int length);
+    public List<String> fetchExecutionJobLogs(String execId, String jobId, int offset, int length);
 
     /**
      * 获取一次执行流中所有的job
      */
-    public RECExecutionHistory fetchFlowExecution(String sessionId, String execId);
+    public RECExecutionHistory fetchFlowExecution(String execId);
 
     /**
      * 获取自某个时刻之后被执行的job的信息
      */
-    public RECExecutionSince fetchFlowExecInfoSince(String sessionId, String execId, Date date);
+    public RECExecutionSince fetchFlowExecInfoSince(String execId, Date date);
 
     /**
      *  获取自某个时刻之后被执行的job的信息
      * @param lastUpdateTime 距离1976年的毫秒数
      */
-    public RECExecutionSince fetchFlowExecInfoSince(String sessionId, String execId, long lastUpdateTime);
+    public RECExecutionSince fetchFlowExecInfoSince(String execId, long lastUpdateTime);
 
 }

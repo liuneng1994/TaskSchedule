@@ -27,14 +27,13 @@ public class RecordServiceImpl implements RecordService {
      * 获取执行流中的job执行记录，记录列表从offset开始，最多length个字符
      * length如果小于1，将采用默认值：int的最大值
      */
-    public List<String> fetchExecutionJobLogs(String sessionId, String execId, String jobId, int offset, int length){
+    public List<String> fetchExecutionJobLogs(String execId, String jobId, int offset, int length){
         HttpResponse<String> response;
         if(length < 1){
             length = Integer.MAX_VALUE;
         }
         try {
             response = RequestUtils.get(RequestUrl.EXECUTOR)
-                    .queryString("session.id",sessionId)
                     .queryString("jobId",jobId)
                     .queryString("execid",execId)
                     .queryString("ajax","fetchExecJobLogs")
@@ -56,11 +55,10 @@ public class RecordServiceImpl implements RecordService {
      * (job执行的依赖关系存放在json的in字段中)
      */
     @Override
-    public RECExecutionHistory fetchFlowExecution(String sessionId, String execId) {
+    public RECExecutionHistory fetchFlowExecution(String execId) {
         HttpResponse<String> response;
         try {
             response = RequestUtils.get(RequestUrl.EXECUTOR)
-                    .queryString("session.id",sessionId)
                     .queryString("execid",execId)
                     .queryString("ajax","fetchexecflow")
                     .asString();
@@ -82,11 +80,11 @@ public class RecordServiceImpl implements RecordService {
      * 获取执行流在某个时刻之后的执行信息（自某个时刻之后被更新的执行流的信息）
      */
     @Override
-    public RECExecutionSince fetchFlowExecInfoSince(String sessionId, String execId, Date date) {
+    public RECExecutionSince fetchFlowExecInfoSince(String execId, Date date) {
         if(null == date){
             return null;
         }
-        return this.fetchFlowExecInfoSince(sessionId,execId,date.getTime());
+        return this.fetchFlowExecInfoSince(execId,date.getTime());
     }
 
     /**
@@ -94,11 +92,10 @@ public class RecordServiceImpl implements RecordService {
      * @param lastUpdateTime 毫秒数
      */
     @Override
-    public RECExecutionSince fetchFlowExecInfoSince(String sessionId, String execId, long lastUpdateTime) {
+    public RECExecutionSince fetchFlowExecInfoSince(String execId, long lastUpdateTime) {
         HttpResponse<String> response;
         try {
             response = RequestUtils.get(RequestUrl.EXECUTOR)
-                    .queryString("session.id",sessionId)
                     .queryString("execid",execId)
                     .queryString("ajax","fetchexecflowupdate")
                     .queryString("lastUpdateTime",lastUpdateTime)
