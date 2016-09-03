@@ -1,6 +1,5 @@
 package hbi.core.azkaban.entity.record;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
@@ -61,6 +60,14 @@ public class DBExecutionFlow {
 
     public void setSubmitUser(String submitUser){
         object.put("submit_user",submitUser);
+    }
+
+    public long getSubmitTime() {
+        return object.getLong("submit_time");
+    }
+
+    public void setSubmitTime(long submitTime) {
+        object.put("submit_time",submitTime);
     }
 
     public long getUpdateTime() {
