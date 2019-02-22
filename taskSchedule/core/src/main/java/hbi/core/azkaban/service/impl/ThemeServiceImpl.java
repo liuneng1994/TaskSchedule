@@ -7,8 +7,6 @@ import hbi.core.azkaban.service.ThemeService;
 import org.apache.log4j.Logger;
 
 /**
- * Created by yyz on 2016/9/5.
- * yazheng.yang@hand-china.com
  */
 public class ThemeServiceImpl implements ThemeService {
     private ThemeMapper themeMapper;

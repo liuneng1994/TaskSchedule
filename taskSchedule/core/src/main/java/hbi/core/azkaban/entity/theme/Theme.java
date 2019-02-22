@@ -1,8 +1,7 @@
 package hbi.core.azkaban.entity.theme;
 
 /**
- * Created by yyz on 2016/9/5.
- * yazheng.yang@hand-china.com
+ *
  */
 public class Theme {
     private int themeId;
